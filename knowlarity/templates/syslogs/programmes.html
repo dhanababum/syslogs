@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}
+<input type='button' id='refresh' class='btn btn-primary' value='refresh' />
+<table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>Programme Name</th>
+          <th>Occured</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for log in logs %}
+          <tr class='pgs' date='{{ log.updated_date }}' id='{{ log.id }}'>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ log.id }}</td>
+          <td>{{ log.programme }}</td>
+          <td>{{ log.occured }}</td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
+{% block scriptblock %}
+    <script src="{% static 'js/syslogs.js' %}"></script>
+{% endblock %}
+
